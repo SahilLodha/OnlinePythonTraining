@@ -14,7 +14,7 @@
 """
 
 string = "Sahil"
-if 'a' in string:
+if 'an' in string:
     print('a Found')
 else:
     print("A not found")
@@ -35,8 +35,9 @@ else:
 for <variable> in <iterable>
     <statements>
 """
-marks = (89, 5, 70)
+marks = (89, 52, 70, 50)
 sum = 0
+
 for mark in marks:
     if mark < 40:
         print("Failed")

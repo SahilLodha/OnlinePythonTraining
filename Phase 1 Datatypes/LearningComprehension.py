@@ -1,5 +1,5 @@
-list1 = [2, 3, 4, 5, 6, 7]
-
+list1 = [x if x % 2 == 0 else x-1 for x in range(2, 8, 1)]
+print("List 1:", list1)
 # List Comprehension
 """
     No no condition: [<VariableToAdd> for-loop-defining-variable]

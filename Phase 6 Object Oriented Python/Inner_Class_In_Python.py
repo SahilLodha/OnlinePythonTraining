@@ -1,6 +1,9 @@
+from pandas import read_excel
+
+
 class Student:
     class Faculty:
-        def __init__(self, course, sem=0):
+        def __init__(self, course, sem):
             self.course = course
             self.semester = sem
 
@@ -10,28 +13,26 @@ class Student:
     school_name = "Assassins School"
 
     # Special Methods
-    def __init__(self, name, roll, mark1, mark2, mark3, course="Bsc CSIT"):
+    def __init__(self, name, roll, mark1, mark2, mark3, course="Bsc CSIT", sem=0):
         self.name = name
         self.roll = roll
-        self.mark1 = mark1
-        self.mark2 = mark2
-        self.mark3 = mark3
-        self.faculty = self.Faculty(course)
+        self.marks = [mark1, mark2, mark3]
+        self.faculty = self.Faculty(course, sem)
 
     def __str__(self):
-        return f"Details:\nName:{self.name}\nRoll: {self.roll}\nMarks: [{self.mark1}, {self.mark2}, {self.mark3}]\n{self.Faculty.__str__(self.faculty)}"
+        return f"Details:\nName:{self.name}\nRoll: {self.roll}\nMarks: {self.marks}\n{self.faculty}"
 
     # Creating a Instance Method
     # Calculation of average
     def avg(self):
-        return (self.mark1 + self.mark2 + self.mark3) / 3
+        return sum(self.marks)/3
 
     # Pass or fail
     def pass_fail(self):
-        if self.mark1 > 40 and self.mark2 > 40 and self.mark3 > 40:
-            return True
+        if False in list(map(lambda x : True if x>40 else False, self.marks )):
+            return "Fail"
         else:
-            return False
+            return "Pass"
 
     # Creating a class Method
     # def info(cls):
@@ -47,13 +48,10 @@ class Student:
         return average / 10
 
 
-s1 = Student(name="Sahil", roll=421, mark1=75, mark2=78, mark3=81)
+s1 = Student(name="Sahil", roll=421, mark1=75, mark2=78, mark3=81, course="BSc Physics", sem=4)
 print("The average of the students is", s1.avg())
 
-if s1.pass_fail():
-    print("Passed")
-else:
-    print('Failed')
+print(s1.pass_fail())
 
 print("The School Name:", Student.getSchoolName())
 print("The GPS point obtained out of 10: ", Student.convertGPS(s1.avg()))
