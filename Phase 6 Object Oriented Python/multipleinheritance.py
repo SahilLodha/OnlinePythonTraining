@@ -6,11 +6,11 @@ class Person:
         self.date_of_birth = date_of_birth
 
     def __str__(self):
-        return f"Details are:\nName: {self.first_name} + " f" + {self.last_name}\nNumber: {self.number}\nDate Of Birth: {self.date_of_birth}"
+        return f"Details are:\nName: {self.first_name} {self.last_name}\nNumber: {self.number}\nDate Of Birth: {self.date_of_birth}"
 
 
 class Student(Person):
-    def __init__(self, fname, lname, number, date_of_birth ,roll_no, batch, faculty):
+    def __init__(self, fname, lname, number, date_of_birth, roll_no, batch, faculty):
         Person.__init__(self, fname, lname, date_of_birth, number)
         self.roll_no = roll_no
         self.batch = batch
@@ -21,9 +21,18 @@ class Student(Person):
 
 
 class Teacher(Person):
-    def __init__(self, fname, lname, number, date_of_birth, subject):
+    # Creating private variables here.
+    __salary = None
+
+    def __init__(self, fname, lname, number, date_of_birth, subject, semester, salary=80000):
         Person.__init__(self, fname, lname, number=number, date_of_birth=date_of_birth)
         self.subject = subject
+        self.semesters = semester
+        self.__salary = salary
 
     def __str__(self):
-        return f'{Person.__str__(self)}\nSubject: {self.subject}'
+        return f'{Person.__str__(self)}\nSubject: {self.subject}\nGross Salary: {self.__salary}'
+
+
+teachObj = Teacher('Shreyansh', 'Lodha', 9818651541, '9/16/1996', ['NM', 'DSA'], {'BCA': [1, 4], 'CSIT': [2, 5]})
+print(teachObj)
