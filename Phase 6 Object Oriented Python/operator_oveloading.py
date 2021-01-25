@@ -14,12 +14,14 @@ class Vector:
         else:
             return f'The Details of the vector are:\nX - Coordinate: {self.__x_coordinate}\nY - Coordinate: {self.__y_coordinate}\nZ - Coordinate: {self.__z_coordinate}\n'
 
+    # OVERRIDING THE * OPERATOR THROUGH __mul__ magic function ...
     def __mul__(self, other):
         x_prod = self.__x_coordinate * other.__x_coordinate
         y_prod = self.__y_coordinate * other.__y_coordinate
         z_prod = self.__z_coordinate * other.__z_coordinate
         return x_prod + y_prod + z_prod
 
+    # OVERRIDING THE + OPERATOR THROUGH __add__ magic function ...
     def __add__(self, other):
         angle = (self * other)/(self.magnitude() * other.magnitude())
         value = self.magnitude() ** 2 + other.magnitude() ** 2 + 2*self.magnitude()*other.magnitude()*angle
