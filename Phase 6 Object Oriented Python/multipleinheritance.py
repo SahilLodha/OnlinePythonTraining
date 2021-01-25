@@ -1,5 +1,5 @@
 class Person:
-    def __init__(self, fname, lname, date_of_birth, number=None):
+    def __init__(self, fname, lname, date_of_birth=None, number=None):
         self.first_name = fname
         self.last_name = lname
         self.number = number
@@ -36,3 +36,9 @@ class Teacher(Person):
 
 teachObj = Teacher('Shreyansh', 'Lodha', 9818651541, '9/16/1996', ['NM', 'DSA'], {'BCA': [1, 4], 'CSIT': [2, 5]})
 print(teachObj)
+
+studentObj = Student('Sahil', 'Lodha', number=980123588, date_of_birth='03\\24\\2000', roll_no='0837', batch=2022, faculty='CSIT')
+print(studentObj)
+
+personObj = Person('Rajendra', 'Lodha')
+print(personObj)
